@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { HeroService } from "../hero.service";
 import { Hero } from '../../interfaces/hero';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-hero-detail',
@@ -39,6 +40,16 @@ export class HeroDetailComponent
         hero =>
           this.hero = hero
       );
+  }
+
+  save(): void
+  {
+    if (this.hero)
+    {
+      this.heroService
+        .updateHero(this.hero)
+        .subscribe(() => this.goBack());
+    }
   }
 
   goBack(): void
