@@ -6,6 +6,7 @@ import { Hero } from '../../interfaces/hero';
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.sass']
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent
+{
   @Input() hero?: Hero;
 }
