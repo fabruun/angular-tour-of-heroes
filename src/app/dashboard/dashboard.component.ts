@@ -3,26 +3,25 @@ import { Hero } from '../../interfaces/hero';
 import { HeroService } from "../hero.service";
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.sass']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.sass']
 })
-export class HeroesComponent implements OnInit
+export class DashboardComponent implements OnInit
 {
+  heroes: Hero[] = [];
+
   constructor(private heroService: HeroService)
   {
 
   }
-  heroes: Hero[] = [];
 
   getHeroes(): void
   {
-    this
-      .heroService
-      .getHeroes()
+    this.heroService.getHeroes()
       .subscribe(
         heroes =>
-          this.heroes = heroes
+          this.heroes = heroes.slice(1, 5)
       );
   }
 
@@ -30,4 +29,5 @@ export class HeroesComponent implements OnInit
   {
     this.getHeroes();
   }
+
 }
